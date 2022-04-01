@@ -35,7 +35,7 @@
         }
         // if all the parameters are valid, then we insert the record into the database
         else{
-            $db = new PDO('mysql:host=localhost;dbname=musicdepot', 'root', 'root');
+            $db = new PDO('mysql:host=localhost;dbname=musicdepot', 'root', 'mmljar');
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $query = "INSERT INTO records (name, artist, year, price) VALUES ('$name', '$artist', '$year', '$price')";
             $db->exec($query);

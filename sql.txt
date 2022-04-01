@@ -1,0 +1,15 @@
+-- required list of commands
+create database musicdepot;
+use musicdepot;
+create table records(
+Name char(100),
+Artist char(100),
+Year int(4) unsigned,
+Price decimal(5,2))
+alter table records add primary key (Name, Artist);
+
+
+insert into records(name, artist, year, price) values("Bon Iver", "Bon Iver", 2011,21.86)
+insert into records(name, artist, year, price) values("Songs of Innocence", "U2", 2014,0.00)
+insert into records(name, artist, year, price) values("Peace", "Demon Hunter", 2019, 15)
+select * from records

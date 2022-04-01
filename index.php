@@ -53,7 +53,20 @@ March 30, 2020
         <h2>Submit</h2>
         <input type="submit" value="Search">
     </div>
-    <script src=indexscripts.js type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+        // echo succes  
+        $('#search_type').change(function() {
+            if ($('#search_type').val() == 'name' || $('#search_type').val() == 'artist') {
+                // limit the options to =
+                $('#search_operator').html('<option value="=">=</option>');
+            } else {
+                // enable all options (=, <, >, <=, >=)
+                $('#search_operator').html('<option value="=">=</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="<=">&lt;=</option><option value=">=">&gt;=</option>');
+            }
+            });
+        });
+    </script>
 </form>
     <?php
     // if submit is pressed, then we reload the page with the search parameters in the url
@@ -80,7 +93,7 @@ March 30, 2020
         if(empty($search_value)) {
             echo "Showing Music Depot's entire catalogue";
 
-            $db = new mysqli('localhost', 'root', 'root', 'musicdepot');
+            $db = new mysqli('localhost', 'root', 'mmljar', 'musicdepot');
             if ($db->connect_error) {
                 die('Connect Error (' . $db->connect_errno . ') '
                     . $db->connect_error);
@@ -113,7 +126,7 @@ March 30, 2020
             // if the user is not on the initial page load, then we display the search results
             echo "Showing all results from the entire Music Depot Catalogue where $search_type $search_operator $search_value <br>";
 
-            $db = new mysqli('localhost', 'root', 'root', 'musicdepot');
+            $db = new mysqli('localhost', 'root', 'mmljar', 'musicdepot');
             if ($db->connect_error) {
                 die('Connect Error (' . $db->connect_errno . ') '
                     . $db->connect_error);
