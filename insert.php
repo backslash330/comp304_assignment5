@@ -1,3 +1,8 @@
+<!--
+Nicholas Almeida
+CMPT304 - Assignment 5 
+March 30, 2020
+-->
 <header>
     <title> Music Depot: Insert</title>
     <!-- add jquery -->
